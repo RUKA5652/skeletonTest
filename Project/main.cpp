@@ -3,10 +3,10 @@
 
 
 /*
-ƒEƒBƒ“ƒhƒE‚ğŠJ‚¢‚Ä‚é‚Ì‚Í@OS
-ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÍWindows‚É‘Î‚µ‚Ä@‚±‚¤‚¢‚¤ƒEƒBƒ“ƒhƒE‚ğì‚Á‚ÄŠJ‚¢‚Ä‚Ë@‚Æ‚¨f‚¢‚ğ—§‚Ä‚Ä‚¢‚é
+ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ã„ã¦ã‚‹ã®ã¯ã€€OS
+ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯Windowsã«å¯¾ã—ã¦ã€€ã“ã†ã„ã†ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œã£ã¦é–‹ã„ã¦ã­ã€€ã¨ãŠä¼ºã„ã‚’ç«‹ã¦ã¦ã„ã‚‹
 
-¡‰ñ@mainŠÖ”‚ª‚ ‚è‚Ü‚·A‚±‚ê‚ğŒÄ‚Ño‚µ‚Ä‚¢‚é‚Ì‚ÍOS‚Å‚·
+ä»Šå›ã€€mainé–¢æ•°ãŒã‚ã‚Šã¾ã™ã€ã“ã‚Œã‚’å‘¼ã³å‡ºã—ã¦ã„ã‚‹ã®ã¯OSã§ã™
 
 */
 //int main()
@@ -22,23 +22,24 @@
 //		DxLib_End();
 //}
 
-int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_	HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)//ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg 
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_	HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)//ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ 
 {
-	SetWindowText("2016016_™‰ª@—³“ñ");
+	SetWindowText("2016016_æ‰å²¡ã€€ç«œäºŒ");
 	SetGraphMode(500, 500, 16);
 		ChangeWindowMode(true);
 				DxLib_Init();
 				SetDrawScreen(DX_SCREEN_BACK);
 
-				while (!CheckHitKey(KEY_INPUT_ESCAPE))
+				while (ProcessMessage() == 0 && !CheckHitKey(KEY_INPUT_ESCAPE))
 				{
 						ClearDrawScreen();
 						ScreenFlip();
 
-						if (ProcessMessage())//ƒEƒBƒ“ƒhƒE‚ª•Â‚¶‚éÛ‚É‰½‚©ƒAƒNƒVƒ‡ƒ“‚ğ‹N‚±‚·
-						{
-							break;
-						}
+	
+				}
+				if (ProcessMessage() == 0)//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‰ã˜ã‚‹éš›ã«ä½•ã‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’èµ·ã“ã™
+				{
+					break;
 				}
 				DxLib_End();
 }
